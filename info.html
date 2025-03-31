@@ -120,7 +120,9 @@
             <!-- Google Maps Integration -->
             <div class="map-container">
                 <h3>Event Location</h3>
-                <div id="map"></div>
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63361.14062490948!2d107.58147541215182!3d-7.000887307643915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c05145798de3%3A0x42b40e04933a1ac1!2sSMA%20Negeri%201%20Baleendah%20Kabupaten%20Bandung!5e0!3m2!1sen!2sid!4v1743441712474!5m2!1sen!2sid" width="100%" height="400" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
                 <div class="location-details">
                     <p><strong>FEFO 2025</strong></p>
                     <p>SMAN 1 Baleendah</p>
@@ -189,51 +191,6 @@
         </div>
     </footer>
 
-    <!-- Google Maps API Script -->
-    <script>
-        function initMap() {
-            // Example coordinates (replace with actual event location)
-            const eventLocation = { lat: 35.6895, lng: 139.6917 };
-            
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
-                center: eventLocation,
-                styles: [
-                    {
-                        "featureType": "all",
-                        "elementType": "geometry",
-                        "stylers": [{ "color": "#f5f5f5" }]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "geometry",
-                        "stylers": [{ "color": "#c9c9c9" }]
-                    },
-                    {
-                        "featureType": "water",
-                        "elementType": "labels.text.fill",
-                        "stylers": [{ "color": "#9e9e9e" }]
-                    }
-                ]
-            });
-            
-            const marker = new google.maps.Marker({
-                position: eventLocation,
-                map: map,
-                title: "FEFO 2025",
-                animation: google.maps.Animation.DROP
-            });
-            
-            const infoWindow = new google.maps.InfoWindow({
-                content: "<strong>FEFO 2025</strong><br>National Education Center<br>123 Academic Boulevard, Tokyo District"
-            });
-            
-            marker.addListener("click", () => {
-                infoWindow.open(map, marker);
-            });
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <script src="js/script.js"></script>
 </body>
 </html>
