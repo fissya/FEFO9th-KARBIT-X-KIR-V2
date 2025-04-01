@@ -186,7 +186,7 @@ header .container {
 }
 
 .logo {
-    max-width: 100px;
+    max-width: 120px;
 }
 
 .logo img {
@@ -205,7 +205,7 @@ header .container {
 
 .nav-menu li a {
     background-color: var(--wood-tone); /* Optional: Add background color on hover */
-    border-radius: 5px; /* Optional: Add border radius for a softer look */
+    border-radius: 30px; /* Optional: Add border radius for a softer look */
     color: var(--white);
     font-weight: bold; /* Increased font weight for stronger appearance */
     position: relative;
@@ -244,7 +244,6 @@ header .container {
     background-color: var(--black) !important;
     color: var(--gold) !important;
     padding: 8px 20px;
-    border-radius: 20px;
 }
 
 .nav-btn:hover {
@@ -256,7 +255,35 @@ header .container {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--black);
+    color: var(--white);
+}
+
+/* ===== Keyframes for Falling Animation ===== */
+@keyframes falling {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(600px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.cherry-blossom {
+    position: absolute;
+    background-image: url('../images/sakura.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    animation: falling 8s linear infinite;
 }
 
 /* ===== Hero Section ===== */
@@ -306,6 +333,8 @@ header .container {
 }
 
 .btn-register {
+    background-color: var(--black);
+    color: var(--white) !important;
     display: inline-block;
     margin-top: 20px;
     font-size: 1.1rem;
@@ -334,6 +363,8 @@ header .container {
 
 .countdown-item span:last-child {
     font-size: 1rem;
+    color: var(--black);
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -862,7 +893,6 @@ footer {
 
 .btn-submit {
     padding: 15px 40px;
-    font-size: 1.1rem;
 }
 
 /* Modal */
