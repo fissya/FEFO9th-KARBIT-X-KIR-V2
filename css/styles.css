@@ -19,8 +19,8 @@
     
     /* Font Families */
     --heading-font: 'Kaushan Script', cursive;
-    --body-font: 'Patrick Hand', cursive;
-    
+    --body-font: 'Noto Sans JP', sans-serif;
+        
     /* Spacing */
     --section-padding: 80px 0;
     --container-padding: 0 20px;
@@ -51,16 +51,16 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-    background:rgb(222, 248, 26); /* Color of the scrollbar thumb */
+    background: var(--temple-red); /* Color of the scrollbar thumb */
     border-radius: 10px; /* Rounded corners */
 }
 
 body::-webkit-scrollbar-thumb {
-    background: linear-gradient(rgba(250, 0, 158, 0.54),rgb(255, 255, 255)); /* Color on hover */
+    background: linear-gradient(rgba(250, 0, 0, 0.54),rgb(255, 255, 255)); /* Color on hover */
 }
 
 body::-webkit-scrollbar-track {
-    background:rgb(190, 52, 52); /* Background of the scrollbar track */
+    background: var(--off-white); /* Color of the scrollbar track */
 }
 
 .container {
@@ -166,6 +166,15 @@ button:active, .btn-register:active, .btn-submit:active, .btn-modal:active {
     top: 0;
 }
 
+.brush-stroke::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--temple-red) 60%, var(--gold) 100%);
+    bottom: -3px;
+}
+
 /* ===== Header ===== */
 header {
     background: transparent;
@@ -255,7 +264,7 @@ header .container {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--white);
+    color: var(--black);
 }
 
 /* ===== Keyframes for Falling Animation ===== */
@@ -403,6 +412,7 @@ header .container {
 .about {
     padding: var(--section-padding);
     background-color: var(--white);
+
 }
 
 .about-content {
@@ -414,6 +424,7 @@ header .container {
 .about-image {
     flex: 1;
     position: relative;
+    border-radius: 10px;
 }
 
 .about-image::before {
@@ -431,10 +442,12 @@ header .container {
     width: 100%;
     height: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .about-text {
     flex: 1;
+    color: var(--black);
 }
 
 .about-text p {
