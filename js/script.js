@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(card);
         });
     }
-    
+
     // Form field animations
     const formFields = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
     if (formFields.length > 0) {
