@@ -92,14 +92,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightbox = document.querySelector('.lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeLightbox = document.querySelector('.close-lightbox');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    let currentIndex = 0;
     
     if (galleryItems.length > 0 && lightbox && lightboxImg && closeLightbox) {
-        galleryItems.forEach(item => {
+        galleryItems.forEach((item, index) => {
             item.addEventListener('click', function() {
                 const imgSrc = this.getAttribute('data-src');
                 lightboxImg.src = imgSrc;
                 lightbox.style.display = 'block';
                 document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+                currentIndex = index; // Set current index
             });
         });
         
@@ -123,6 +127,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = 'auto';
             }
         });
+        
+        // Navigate to the previous image
+        if (prevButton) {
+            prevButton.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                lightboxImg.src = galleryItems[currentIndex].getAttribute('data-src');
+            });
+        }
+        
+        // Navigate to the next image
+        if (nextButton) {
+            nextButton.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                lightboxImg.src = galleryItems[currentIndex].getAttribute('data-src');
+            });
+        }
     }
     
     // Registration Form Handling
