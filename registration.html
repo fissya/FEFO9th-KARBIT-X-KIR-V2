@@ -51,7 +51,7 @@
                         </div>
                         <div class="detail-item">
                             <i class="fas fa-user-graduate"></i>
-                            <p>Open to all high school students</p>
+                            <p>Open to all Junior school students</p>
                         </div>
                         <div class="detail-item">
                             <i class="fas fa-clipboard-list"></i>
@@ -65,76 +65,64 @@
                 </div>
                 
                 <div class="registration-form-container">
-                    <form id="registration-form" class="registration-form">
+                    <form id="registration-form" class="registration-form" name="kirim-FEFO">
                         <div class="form-group">
-                            <label for="fullname">Full Name <span class="required">*</span></label>
-                            <input type="text" id="fullname" name="fullname" required>
+                            <label for="fullname">Nama lengkap <span class="required">*</span></label>
+                            <input type="text" id="fullname" name="nama" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="class-level">Class Level <span class="required">*</span></label>
-                            <select id="class-level" name="class-level" required>
-                                <option value="" disabled selected>Select your class level</option>
-                                <option value="grade-10">Grade 10</option>
-                                <option value="grade-11">Grade 11</option>
-                                <option value="grade-12">Grade 12</option>
+                            <label for="class-level">Tingkat Kelas <span class="required">*</span></label>
+                            <select id="class-level" name="kelas" required>
+                                <option value="" disabled selected>Select Kelas berapa kamu? </option>
+                                <option value="grade-10">Kelas 7</option>
+                                <option value="grade-11">Kelas 8</option>
+                                <option value="grade-12">Kelas 9</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="school">School of Origin <span class="required">*</span></label>
-                            <input type="text" id="school" name="school" required>
+                            <label for="school">Asal sekolah <span class="required">*</span></label>
+                            <input type="text" id="school" name="sekolah" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="whatsapp">WhatsApp Number <span class="required">*</span></label>
+                            <label for="whatsapp">Nomor Whatsapp <span class="required">*</span></label>
                             <input type="tel" id="whatsapp" name="whatsapp" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address <span class="required">*</span></label>
+                            <label for="email">Alamat Email <span class="required">*</span></label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         
                         <div class="form-group">
-                            <label>Competitions (Select at least one) <span class="required">*</span></label>
+                            <label>Perlombaan (Select at least one) <span class="required">*</span></label>
                             <div class="checkbox-group">
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="math" name="competitions" value="math">
+                                    <input type="checkbox" id="math" name="lomba" value="math">
                                     <label for="math">Sakura Mathematics</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="science" name="competitions" value="science">
+                                    <input type="checkbox" id="science" name="lomba" value="science">
                                     <label for="science">Fuji Science Challenge</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="literature" name="competitions" value="literature">
+                                    <input type="checkbox" id="literature" name="lomba" value="literature">
                                     <label for="literature">Kyoto Literature Quest</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="history" name="competitions" value="history">
+                                    <input type="checkbox" id="history" name="lomba" value="history">
                                     <label for="history">Tokyo History Bowl</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="coding" name="competitions" value="coding">
+                                    <input type="checkbox" id="coding" name="lomba" value="coding">
                                     <label for="coding">Osaka Coding Challenge</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="arts" name="competitions" value="arts">
+                                    <input type="checkbox" id="arts" name="lomba" value="arts">
                                     <label for="arts">Hokkaido Arts Showcase</label>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="additional-info">Additional Information (Optional)</label>
-                            <textarea id="additional-info" name="additional-info" rows="4"></textarea>
-                        </div>
-                        
-                        <div class="form-group terms">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="terms" name="terms" required>
-                                <label for="terms">I agree to the <a href="#">terms and conditions</a> <span class="required">*</span></label>
                             </div>
                         </div>
                         
@@ -161,6 +149,24 @@
         </div>
     </div>
 
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxHSohe0k6mvHFTt6_0JXXW65LUIP5dwlE3CLtbxxOZWTEN8LSh7gaCDBhy362y5DLz/exec'
+        const form = document.forms['kirim-FEFO']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                // Show success modal  
+                const modal = document.getElementById('success-modal');
+                modal.style.display = 'block';
+                form.reset();
+                console.log('Success!', response)
+               })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -172,17 +178,17 @@
                 <div class="footer-social">
                     <h3>Connect With Us</h3>
                     <div class="social-icons">
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="mailto:contact@fefo2025.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.instagram.com/officialfefo_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6282126154790" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://youtu.be/arP8lw6vlOA?si=m92OfscwEccVeTrY" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="mailto:fissyaneet@gmail.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#about">FEFO?</a></li>
                         <li><a href="index.html#competitions">Competitions</a></li>
                         <li><a href="index.html#gallery">Gallery</a></li>
                         <li><a href="info.html">More Information</a></li>
